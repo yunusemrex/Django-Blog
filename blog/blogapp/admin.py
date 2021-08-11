@@ -2,11 +2,19 @@
 from django.contrib import admin
 from .models.category import CategoryModel
 from .models.post import PostModel
+from .models.comment import CommentModel
 
 class PostAdmin(admin.ModelAdmin):
     search_fields = ('title', 'content',)
     list_display = ('title', 'created_date', 'edited_date',)
 
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('commenter','created_date','updated_date')
+    search_fields = ('commenter__username',)
+
+
+
 admin.site.register(CategoryModel)
-admin.site.register(PostModel)
+admin.site.register(PostModel, PostAdmin)
+admin.site.register(CommentModel, CommentAdmin)
