@@ -1,7 +1,6 @@
 from django.db import models
 from autoslug import AutoSlugField
 from blogapp.models import CategoryModel
-from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 
 
@@ -14,7 +13,7 @@ class PostModel(models.Model):
     edited_date = models.DateTimeField(auto_now=True)
     slug = AutoSlugField(populate_from = 'title', unique=True)
     categories = models.ManyToManyField(CategoryModel, related_name='post')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
+    author = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE, related_name='posts')
 
     class Meta:
         verbose_name = 'Post'
