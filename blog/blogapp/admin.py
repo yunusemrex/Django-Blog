@@ -5,23 +5,22 @@ from .models.post import PostModel
 from .models.comment import CommentModel
 from .models.contact import ContactModel
 
+
+@admin.register(PostModel)
 class PostAdmin(admin.ModelAdmin):
     search_fields = ('title', 'content',)
-    list_display = ('title', 'created_date', 'edited_date',)
+    list_display = ('title', 'created_date', 'updated_date',)
 
 
+@admin.register(CommentModel)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('commenter','created_date','updated_date')
     search_fields = ('commenter__username',)
 
 
+@admin.register(ContactModel)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('email' , 'created_date')
     search_fields = ('email',)
 
 
-
-admin.site.register(CategoryModel)
-admin.site.register(PostModel, PostAdmin)
-admin.site.register(CommentModel, CommentAdmin)
-admin.site.register(ContactModel,ContactAdmin)

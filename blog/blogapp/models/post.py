@@ -2,15 +2,14 @@ from django.db import models
 from autoslug import AutoSlugField
 from blogapp.models import CategoryModel
 from ckeditor.fields import RichTextField
+from blogapp.abstract_model import DateAbstractModel
 
 
 
-class PostModel(models.Model):
+class PostModel(DateAbstractModel):
     image = models.ImageField(upload_to='post-images')
     title = models.CharField(max_length=50)
     content = RichTextField()
-    created_date = models.DateTimeField(auto_now_add=True)
-    edited_date = models.DateTimeField(auto_now=True)
     slug = AutoSlugField(populate_from = 'title', unique=True)
     categories = models.ManyToManyField(CategoryModel, related_name='post')
     author = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE, related_name='posts')
