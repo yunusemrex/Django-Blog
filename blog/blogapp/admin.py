@@ -24,3 +24,6 @@ class ContactAdmin(admin.ModelAdmin):
     search_fields = ('email',)
 
 
+@admin.register(CategoryModel)
+class CategoryAdmin(admin.ModelAdmin):
+    search_fields = ('name','slug')
