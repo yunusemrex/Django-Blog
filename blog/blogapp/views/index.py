@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from blogapp.models import PostModel
 
 def index(request):
-    context = {
-        'Job':'Back-end Developer' 
-    }
-    return render(request, 'pages/index.html', context=context)
+    posts = PostModel.objects.all()
+    return render(request, 'pages/index.html', context={
+        'posts': posts
+    })

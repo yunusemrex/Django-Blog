@@ -4,6 +4,6 @@ from blogapp.views import contact
 
 
 urlpatterns = [
-    path('', index),
-    path('iletisim/', contact),
+    path('', index, name='index'),
+    path('iletisim/', contact, name='contact'),
 ]

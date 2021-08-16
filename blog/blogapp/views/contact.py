@@ -3,4 +3,7 @@ from django.http import HttpResponse
 
 
 def contact(request):
-    return render(request, 'pages/contact.html', context={})
+    context = {
+        'sayi': 5
+    }
+    return render(request, 'pages/contact.html', context=context)
