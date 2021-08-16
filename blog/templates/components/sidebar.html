@@ -1,13 +1,25 @@
+{% load category_list %}
+{% category_list as categories %}
+
 </div>
     
       
 <div class="col-sm-3">
+  <h4>Admin</h4> 
+  <hr>
   <ul class="list-group">
   <li class="list-group-item">Menu</li>
   <li class="list-group-item">Profile</li>
   <li class="list-group-item">Change Password</li>
-  <li class="list-group-item">My Post</li>
+  <li class="list-group-item">My Posts</li>
   <li class="list-group-item">Log Out</li>
 
 </ul>
-</div>
+<br>
+<h5>Categories</h5>
+<hr>
+{% for category in categories %}
+<ul class="list-group">
+  <li class="list-group-item">{{ category.name }}</li>
+</ul>
+{% endfor %}

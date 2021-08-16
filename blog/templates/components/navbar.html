@@ -12,13 +12,13 @@
 
             {% for category in categories %}
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">{{ category.name }}</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'category' category_Slug=category.slug %}">{{ category.name }}</a>
               </li>
             {% endfor %}
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
       </div>
     </div>
