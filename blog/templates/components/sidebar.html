@@ -5,15 +5,16 @@
     
       
 <div class="col-sm-3">
+  {% if request.user.is_authenticated %}
   <h4>Admin</h4> 
   <hr>
   <ul class="list-group">
   <li class="list-group-item">Menu</li>
   <li class="list-group-item">Profile</li>
   <li class="list-group-item">Change Password</li>
-  <li class="list-group-item">My Posts</li>
+  <li class="list-group-item"><a href="{% url 'my_posts' %}">My Posts</a></li>
   <li class="list-group-item">Log Out</li>
-
+  {% else %}
 </ul>
 <br>
 <h5>Categories</h5>
@@ -23,3 +24,4 @@
   <li class="list-group-item">{{ category.name }}</li>
 </ul>
 {% endfor %}
+{% endif %}

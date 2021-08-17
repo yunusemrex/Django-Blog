@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title%} My Post {% endblock %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Updated Date</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+        <tr>
+            <th scope="row">{{ post.id }}</th>
+            <td>{{ post.title }}</td>
+            <td>{{ post.updated_date }}</td>
+            <td>Actions</td>
+        </tr>
+        {% endfor %}
+
+
+    </tbody>
+</table>
+
+<H3>Blog Posts</H3>
+
+
+<br>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+        {% if posts.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ posts.previous_page_number }}" tabindex="-1"
+                aria-disabled="true">Previous</a>
+        </li>
+
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+
+        {% endif %}
+
+        <li class="page-item"><a class="page-link" href="#">{{ posts.number }}</a></li>
+
+
+        {% if posts.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ posts.next_page_number }}">Next</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page={{ posts.next_page_number }}">Last Page</a>
+        </li>
+
+        {% endif %}
+
+    </ul>
+</nav>
+{% endblock %}
