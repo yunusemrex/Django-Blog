@@ -8,7 +8,6 @@
 
 <H3>Blog Posts</H3>
 
-
 <div class="mb-3"></div>
 <div class="card">
     <div class="row g-1">
@@ -26,26 +25,32 @@
 </div>
 <br>
 <h5>Comments</h5>
-
 {% for comment in comments %}
 <hr>
 <div class="card">
     <div class="card-body" style="display:flex;flex-direction: row;">
-        {% if comment.commenter.user.avatar %}
-            <img src="{{ comment.avatar.url }}" class="rounded" class="pt-4" width="75px" height="75px">
-        </div>
+        <div>
+        {% if comment.commenter.avatar %}
+            <img src="{{ comment.commenter.avatar.url }}" class="rounded" class="pt-4" width="75px" height="75px">
         {% else %}
         <img src="{% static 'img/no-avatar.png' %}" class="rounded" class="pt-4" width="75px" height="75px">
         {% endif %}
-    <div>
-        <h5 class="card-title">{{ comment.commenter.username }}</h5>
-    <p class="card-text">{{ comment.comment }}</p>
         </div>
-    </div>  
+        <div>
+            <h5 class="card-title">{{ comment.commenter.username }}</h5>
+            <p class="card-text">
+                {{ comment.comment }}
+            </p>
+        </div>
+    </div>
 </div>
 
+{% empty %}
+<p>This post has no comment</p>
+{% endfor %}
 
-{% endfor %}{% endblock %}
+
+{% endblock %}
         
 
 

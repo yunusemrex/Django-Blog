@@ -4,8 +4,10 @@
 
 {% block content %}  
 
-    {% if sayi == 5 %}
-        sayı 5'tir. sayı 5'tir. sayı 5'tir. sayı 5'tir. sayı 5'tir. sayı 5'tir.
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
 
-    {% endif %}
 {% endblock %}
