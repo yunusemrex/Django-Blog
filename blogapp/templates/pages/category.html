@@ -15,7 +15,11 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{ post.title }}</h5>
+        <h5 class="card-title"> 
+          <a href="{% url 'detail' slug=post.slug %}">
+            {{ post.title }}
+          </a>
+        </h5>
         <p class="card-text"> {{ post.content|safe|truncatechars_html:150 }} </p>
         <p class="card-text"><smalL class="text-primary"> Published {{ post.created_date|date }} </small></p>
       </div>
@@ -41,9 +45,9 @@
     {% endif %}
 
     <li class="page-item"><a class="page-link" href="#">{{ posts.number }}</a></li>
-    
 
-    {% if posts.has_next %} 
+
+    {% if posts.has_next %}
     <li class="page-item">
       <a class="page-link" href="?page={{ posts.next_page_number }}">Next</a>
     </li>
@@ -52,7 +56,7 @@
     </li>
 
     {% endif %}
- 
+
   </ul>
 </nav>
 {% endblock %}

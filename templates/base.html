@@ -14,8 +14,8 @@
 
   <title>{% block title %} {% endblock %}</title>
 </head>
-
 <body>
+  
   {% include 'components/navbar.html' %}
 
   <div class="container mt-3">
@@ -24,14 +24,17 @@
         {% block content %}
 
         {% endblock %}
+      </div>
+
+
 
         {% include 'components/sidebar.html' %}
+      </div>
 
 
+        {% include 'components/footer.html' %}
+      </div>
 
-
-
-  {% include 'components/footer.html' %}
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="{% static 'js/bootstrap.bundle.min.js'%}"

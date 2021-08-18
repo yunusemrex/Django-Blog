@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%} {{ post.title }} {% endblock %}
+
+{% block content %}
+
+<H3>Blog Posts</H3>
+
+
+<div class="mb-3"></div>
+<div class="card">
+    <div class="row g-1">
+        <div class="col-md-4">
+            <img src="{{ post.image.url }}" class="img">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h3 class="card-title">{{ post.title }}</h3>
+                <p class="card-text"> {{ post.content|safe }} </p>
+                <p class="card-text"><smalL class="text-primary"> Published {{ post.created_date|date }} </small></p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<h5>Comments</h5>
+
+{% for comment in comments %}
+<hr>
+<div class="card">
+    <div class="card-body" style="display:flex;flex-direction: row;">
+        {% if comment.commenter.user.avatar %}
+            <img src="{{ comment.avatar.url }}" class="rounded" class="pt-4" width="75px" height="75px">
+        </div>
+        {% else %}
+        <img src="{% static 'img/no-avatar.png' %}" class="rounded" class="pt-4" width="75px" height="75px">
+        {% endif %}
+    <div>
+        <h5 class="card-title">{{ comment.commenter.username }}</h5>
+    <p class="card-text">{{ comment.comment }}</p>
+        </div>
+    </div>  
+</div>
+
+
+{% endfor %}{% endblock %}
+        
+
+
+
+
+
+
+
