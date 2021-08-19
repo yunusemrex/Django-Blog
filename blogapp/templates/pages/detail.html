@@ -36,15 +36,7 @@
 </div>
 <br>
 <h5>Comments</h5>
-{% if messages %}
-<div class="alert alert-success" role="alert">
-    {% for message in messages %}
-    {{ message }}
-</div>    
-    {% endfor %}
-
-{% endif %}
-
+{% include 'components/message.html' %}
 {% for comment in comments %}
 <hr>
 <div class="card">
