@@ -1,5 +1,6 @@
+from blogapp.views.delete_comment import delete_comment
 from django.urls import path
-from blogapp.views import contact, category, my_posts, detail, index, add_post, edit_post, delete_post
+from blogapp.views import contact, category, my_posts, detail, index, add_post, edit_post, delete_post, delete_comment
 
 
 urlpatterns = [
@@ -11,5 +12,7 @@ urlpatterns = [
     path('add-post/', add_post, name='add_post'),
     path('edit-post/<slug:slug>', edit_post, name='edit_post'),
     path('delete-post/<slug:slug>', delete_post, name='delete_post'),
+    path('delete-comment/<int:id>', delete_comment, name='delete_comment')
+
 
 ]

@@ -3,6 +3,8 @@
 {% load static %}
 
 {% block title%} {{ post.title }} {% endblock %}
+{% load crispy_forms_tags %}
+
 
 {% block content %}
 
@@ -34,6 +36,15 @@
 </div>
 <br>
 <h5>Comments</h5>
+{% if messages %}
+<div class="alert alert-success" role="alert">
+    {% for message in messages %}
+    {{ message }}
+</div>    
+    {% endfor %}
+
+{% endif %}
+
 {% for comment in comments %}
 <hr>
 <div class="card">
@@ -46,17 +57,34 @@
         {% endif %}
         </div>
         <div>
-            <h5 class="card-title">{{ comment.commenter.username }}</h5>
-            <p class="card-text">
+            <h5 class="card-title mx-3">{{ comment.commenter.username }}</h5>
+            <p class="card-text mx-3">
                 {{ comment.comment }}
             </p>
+                {% if request.user == comment.commenter or request.user == post.author %}
+                <p class=" mt-5 mb-5 mx-3 ">
+                    <a class="btn btn-danger"  href="{% url 'delete_comment' id=comment.id %}">Yorum Sil</a>
+                </p>
+                {% endif %}
         </div>
     </div>
 </div>
-
 {% empty %}
 <p>This post has no comment</p>
 {% endfor %}
+
+<br>
+<h6>Leave a comment</h6>
+{% if request.user.is_authenticated %}
+<form method="POST">
+    {% csrf_token %}
+    {{ add_comment_form|crispy }}
+<input type="submit" value="Leave a comment" class="btn btn-warning mt-3 mb-3">
+</form>
+{% else %}
+<p>Please login to leave a comment.</p>
+{% endif %}
+
 
 
 {% endblock %}
