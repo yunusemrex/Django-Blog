@@ -10,7 +10,7 @@
             <th scope="col">Id</th>
             <th scope="col">Title</th>
             <th scope="col">Updated Date</th>
-            <th scope="col">Actions</th>
+            <th scope="col">  <a class="btn btn-success" href="{% url 'edit_post' slug=post.slug %}">Update</a><a class="btn btn-danger" href="{% url 'delete_post' slug=post.slug %}">Delete</a></th>
         </tr>
     </thead>
     <tbody>

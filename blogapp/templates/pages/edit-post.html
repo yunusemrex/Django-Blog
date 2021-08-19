@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title%} Edit Post {% endblock %}
+
+{% block content %}  
+
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form|crispy }}
+    <input type="submit" class="btn btn-danger mt-3 mb-3" value="Update Post" />
+</form>
+
+{% endblock %}
