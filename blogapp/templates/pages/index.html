@@ -21,7 +21,11 @@
           </a>
         </h5>
         <p class="card-text"> {{ post.content|safe|truncatechars_html:150 }} </p>
-        <p class="card-text"><smalL class="text-primary"> Published {{ post.created_date|date }} </small></p>
+        <p class="card-text"><smalL class="text-primary">
+          Published at {{ post.created_date|date }}
+          <br>
+          Author : <a href="{% url 'profile' username=post.author.username %}"> {{ post.author.username }} </a> 
+           </small></p>
       </div>
     </div>
   </div>
