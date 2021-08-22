@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
+from blogapp import forms
 from blogapp.forms import ContactForm
 from blogapp.models import ContactModel
 from django.views.generic import FormView
+from django.core.mail import message, send_mail
 
 
 class ContactFormView(FormView):
@@ -12,7 +14,9 @@ class ContactFormView(FormView):
 
     def form_valid(self, form):
         form.save()
+        form.send_email(message=form.cleaned_data.get('message'))
         return super().form_valid(form)
+  
 
 
 # def contact(request):
