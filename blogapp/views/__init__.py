@@ -1,4 +1,4 @@
-from .contact import contact
+from .contact import ContactFormView
 from .index import index
 from .category import CategoryListView
 from .my_posts import my_posts

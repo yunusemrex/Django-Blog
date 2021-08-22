@@ -1,13 +1,12 @@
-from django.urls.conf import include
 from blogapp.views.delete_comment import delete_comment
 from django.urls import path
-from blogapp.views import contact, CategoryListView, my_posts, DetailView, index, AddPostCreateView, PostUpdateView, DeletePostView, delete_comment
+from blogapp.views import ContactFormView , CategoryListView, my_posts, DetailView, index, AddPostCreateView, PostUpdateView, DeletePostView, delete_comment
 from django.views.generic import TemplateView, RedirectView
 
 
 urlpatterns = [
     path('', index, name='index'),
-    path('contact/', contact, name='contact'),
+    path('contact/', ContactFormView.as_view(), name='contact'),
     path('about/', TemplateView.as_view(
         template_name = 'pages/about.html'    
     ), name='about'),

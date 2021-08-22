@@ -3,9 +3,11 @@ from blogapp.forms import AddPostModelForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
 from blogapp.models import PostModel
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class AddPostCreateView(CreateView):
+class AddPostCreateView(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
     template_name = 'pages/add-post.html'
     model = PostModel
     fields = ('title','content','image','categories')

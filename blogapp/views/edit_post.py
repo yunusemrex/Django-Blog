@@ -3,9 +3,11 @@ from blogapp.forms import EditsPostModelForm
 from blogapp.models import PostModel
 from django.contrib.auth.decorators import login_required
 from django.views.generic import UpdateView
-from django.urls import reverse
+from django.urls import reverse,  reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class PostUpdateView(UpdateView):
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
     template_name = 'pages/edit-post.html'
     fields = ('title','content','image','author')
 

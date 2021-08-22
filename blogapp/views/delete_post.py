@@ -3,9 +3,11 @@ from django.http import request
 from blogapp.models import PostModel
 from django.shortcuts import redirect
 from django.views.generic import DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse,  reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class DeletePostView(DeleteView):
+class DeletePostView(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('login')
     template_name = 'pages/delete-post-confirm.html'
     success_url = reverse_lazy('index')
 
