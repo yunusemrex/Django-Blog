@@ -1,6 +1,15 @@
 from django.shortcuts import render, redirect
 from blogapp.forms import AddPostModelForm
 from django.contrib.auth.decorators import login_required
+from django.views.generic import CreateView
+from blogapp.models import PostModel
+
+
+class AddPostCreateView(CreateView):
+    template_name = 'pages/add-post.html'
+    model = PostModel
+    fields = ('title','content','image','categories')
+    
 
 @login_required(login_url='/')
 def add_post(request):

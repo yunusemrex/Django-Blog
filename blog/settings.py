@@ -114,3 +114,4 @@ AUTH_USER_MODEL = 'account.CustomUserModel'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+LOGIN_REDIRECT_URL =  '/'
