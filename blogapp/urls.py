@@ -1,7 +1,7 @@
 from django.urls.conf import include
 from blogapp.views.delete_comment import delete_comment
 from django.urls import path
-from blogapp.views import contact, CategoryListView, my_posts, DetailView, index, AddPostCreateView, edit_post, DeletePostView, delete_comment
+from blogapp.views import contact, CategoryListView, my_posts, DetailView, index, AddPostCreateView, PostUpdateView, DeletePostView, delete_comment
 from django.views.generic import TemplateView, RedirectView
 
 
@@ -15,7 +15,7 @@ urlpatterns = [
     path('posts/', my_posts, name='my_posts'),
     path('detail/<slug:slug>', DetailView.as_view(), name='detail'),
     path('add-post/', AddPostCreateView.as_view(), name='add_post'),
-    path('edit-post/<slug:slug>', edit_post, name='edit_post'),
+    path('edit-post/<slug:slug>', PostUpdateView.as_view(), name='edit_post'),
     path('delete-post/<slug:slug>', DeletePostView.as_view(), name='delete_post'),
     path('delete-comment/<int:id>', delete_comment, name='delete_comment'),
     path('redirect', RedirectView.as_view(
