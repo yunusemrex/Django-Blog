@@ -107,3 +107,29 @@ DEFAULT_FROM_EMAIL='backendwithdjango@gmail.com'
 EMAIL_HOST_USER = 'backendwithdjango@gmail.com'
 EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD')
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+      'Basic_Log': {
+          'format': '{process:d} {thread:d} {asctime} {levelname} {message} {name}',
+          'style': '{'
+      }  
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler'
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'logs/post_viewed.log',
+            'formatter': 'Basic_Log'
+        }
+    },
+    'loggers': {
+        'Post_Viewed' : {
+            'handlers': ['console', 'file'],
+            'level': 'INFO'
+        }
+    }
+}
