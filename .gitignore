@@ -4,3 +4,4 @@ db.sqlite3
 post-images
 media
 .env
+prod.sqlite3
